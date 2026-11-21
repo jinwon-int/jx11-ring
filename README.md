@@ -67,6 +67,40 @@ ring.on("middle", lambda: print("middle"))
 ring.start()
 ```
 
+## Map buttons to keys (keymap.json)
+
+`jx11_keys.py` binds each ring event to a keystroke, typed text or a shell
+command from a JSON file — no code changes needed (macOS).
+
+```sh
+cp keymap.example.json keymap.json      # then edit keymap.json
+python jx11_keys.py --check             # validate and list the bindings
+python jx11_keys.py --dry-run           # press buttons, see what would happen
+python jx11_keys.py                     # run for real
+```
+
+```json
+{
+  "scroll_forward": {"keys": "down"},
+  "scroll_back":    {"keys": "up"},
+  "left":           {"keys": "cmd+left"},
+  "middle":         {"keys": "space"},
+  "top":            {"text": "hello"},
+  "middle_double":  {"shell": "open -a Safari"}
+}
+```
+
+- Events: `scroll_forward`, `scroll_back`, `top`, `left`, `right`, `middle`,
+  `middle_double`, `left_double`, `right_double`. Unbound events do nothing.
+- `keys`: `mod+…+key`, modifiers `cmd` `shift` `alt`/`option` `ctrl`; keys are a
+  single character or one of `return enter tab space delete forwarddelete escape
+  left right up down home end pageup pagedown f1`–`f12`. A list runs in order.
+- `text`: types the string. `shell`: runs it with `/bin/sh` — only use a keymap
+  you wrote yourself.
+- Keystrokes are sent with `osascript` (System Events): give your terminal
+  Accessibility permission in System Settings → Privacy & Security →
+  Accessibility. `keymap.json` is git-ignored so personal maps stay local.
+
 ## Status
 - The ring is opened exclusively on macOS: quit any other app using it first, or you'll get "exclusive access and device already open".
 - Tested on macOS with one unit. Linux/Windows untested.
