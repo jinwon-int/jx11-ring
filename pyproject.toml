@@ -8,4 +8,4 @@ requires-python = ">=3.9"
 dependencies = ["hid>=1.0.9"]
 
 [tool.setuptools]
-py-modules = ["jx11"]
+py-modules = ["jx11", "jx11_keys"]

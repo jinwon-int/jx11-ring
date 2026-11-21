@@ -1,0 +1,12 @@
+{
+  "_comment": "Copy to keymap.json and edit. Events without a binding do nothing. See jx11_keys.py for the syntax.",
+  "scroll_forward": {"keys": "down"},
+  "scroll_back":    {"keys": "up"},
+  "left":           {"keys": "left"},
+  "right":          {"keys": "right"},
+  "middle":         {"keys": "space"},
+  "top":            {"keys": "return"},
+  "middle_double":  {"keys": "escape"},
+  "left_double":    {"keys": "cmd+left"},
+  "right_double":   {"keys": "cmd+right"}
+}
